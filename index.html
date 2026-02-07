@@ -1,155 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For My Valentine ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>For Afsana ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    overflow: hidden;
-}
-.card {
-    background: rgba(255,255,255,0.15);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 420px;
-    box-shadow: 0 0 30px rgba(255,255,255,0.4);
-    backdrop-filter: blur(10px);
-    animation: glow 3s infinite alternate;
-}
-@keyframes glow {
-    from { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
-    to { box-shadow: 0 0 40px rgba(255,255,255,0.8); }
-}
-h1 { font-size: 2em; }
-p { font-size: 1.1em; line-height: 1.6; }
-.buttons {
-    margin-top: 30px;
-    position: relative;
-    height: 100px;
-}
-button {
-    padding: 12px 25px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-#yesBtn {
-    background: #ff2f6e;
-    color: white;
-}
-#noBtn {
-    background: white;
-    color: #ff2f6e;
-    position: absolute;
-    left: 220px;
-    top: 0;
-}
-.message {
-    display: none;
-    margin-top: 20px;
-    font-size: 1.2em;
-    animation: fadeIn 1s ease forwards;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.heart {
-    position: absolute;
-    font-size: 22px;
-    animation: float 6s infinite ease-in;
-}
-@keyframes float {
-    0% { transform: translateY(0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(-800px); opacity: 0; }
-}
-.play-note {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-}
-</style>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      animation: fadeIn 2s;
+      max-width: 350px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .heart {
+      font-size: 50px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background: #00ff99;
+      color: black;
+    }
+
+    #noBtn {
+      background: #ff0033;
+      color: white;
+      position: absolute;
+    }
+
+    .hint {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 15px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 
-<body>
+<body onclick="playMusic()">
 
-<audio id="bgMusic" loop>
+  <!-- AUDIO -->
+  <audio id="bgm" loop>
     <source src="song.mp3" type="audio/mpeg">
-</audio>
+  </audio>
 
-<div class="card">
-    <div class="play-note">🎵 Tap anywhere to play our song</div>
-
-    <h1>Hey Afsana ❤️</h1>
+  <div class="card" id="card">
+    <div class="heart">❤️</div>
+    <h1>Afsana</h1>
     <p>
-        Tumhari ek muskurahat meri poori duniya badal deti hai…<br>
-        Har pal, har khushi tumse judi hui hai.
+      Tum meri zindagi ka sabse khoobsurat hissa ho…<br><br>
+      Will you be my Valentine today,<br>
+      and my wife forever? 💍<br><br>
+      Will you become <b>Mrs. Patel</b>? 😘
     </p>
 
-    <h2>
-        Kya tum meri Valentine banogi<br>
-        aur hamesha ke liye <b>Mrs. Patel</b> kahlaogi? 💍
-    </h2>
+    <button id="yesBtn" onclick="yesClicked()">YES ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
 
-    <div class="buttons">
-        <button id="yesBtn">YES ❤️</button>
-        <button id="noBtn">NO 🙈</button>
-    </div>
+    <div class="hint">Tap anywhere to feel my heartbeat 🎶</div>
+  </div>
 
-    <div class="message" id="response">
-        💖 Tumne haan kehkar meri zindagi mukammal kar di 💖<br><br>
-        Main wada karta hoon —
-        har muskaan, har aansu,
-        har sapne mein tumhara saath nibhaunga.
-        <br><br>
-        Forever yours,<br>
-        <b>Hritik Patel</b> 💕
-    </div>
-</div>
+  <script>
+    // MUSIC (browser safe)
+    function playMusic() {
+      const music = document.getElementById("bgm");
+      music.play();
+      document.body.onclick = null;
+    }
 
-<script>
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const response = document.getElementById("response");
-const music = document.getElementById("bgMusic");
+    // YES CLICK
+    function yesClicked() {
+      document.getElementById("card").innerHTML = `
+        <div class="heart">💍</div>
+        <h1>She Said YES ❤️</h1>
+        <p>
+          Thank you my love…<br><br>
+          You just made me the happiest man alive 😭❤️<br><br>
+          Forever yours,<br>
+          <b>Hritik Patel</b>
+        </p>
+      `;
+    }
 
-document.body.addEventListener("click", () => {
-    music.play();
-}, { once: true });
-
-noBtn.addEventListener("mouseover", () => {
-    noBtn.style.left = Math.random() * 250 + "px";
-    noBtn.style.top = Math.random() * 60 + "px";
-});
-
-yesBtn.addEventListener("click", () => {
-    response.style.display = "block";
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-});
-
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "-20px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-}, 350);
-</script>
+    // NO BUTTON ESCAPE
+    function moveNo() {
+      const noBtn = document.getElementById("noBtn");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+  </script>
 
 </body>
 </html>
