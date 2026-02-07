@@ -9,7 +9,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle at top, #ff6fae, #4a0033);
+  background: radial-gradient(circle at top, #ff6fae, #2b0020);
   font-family: 'Georgia', serif;
   color: white;
   overflow: hidden;
@@ -26,24 +26,20 @@ body {
   animation: floatUp linear infinite;
   opacity: 0.7;
 }
-
 @keyframes floatUp {
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Main card */
+/* Card */
 .card {
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.65);
   padding: 40px;
   border-radius: 30px;
   text-align: center;
   max-width: 380px;
-  box-shadow: 0 0 60px rgba(255,105,180,0.6);
+  box-shadow: 0 0 60px rgba(255,105,180,0.7);
   animation: fadeIn 3s;
-  z-index: 10;
+  z-index: 5;
 }
 
 .title {
@@ -51,17 +47,35 @@ body {
   animation: glow 2.5s infinite;
 }
 
-.ring {
+/* Kneel animation */
+.kneel {
   font-size: 60px;
-  margin: 20px 0;
-  animation: ringPulse 2.5s infinite;
+  animation: kneelDown 3s ease forwards;
+}
+
+@keyframes kneelDown {
+  0% { transform: translateY(-40px) scale(1); }
+  100% { transform: translateY(20px) scale(0.9); }
+}
+
+/* Ring rise */
+.ring {
+  font-size: 55px;
+  margin: 15px 0;
+  opacity: 0;
+  animation: ringRise 3s ease forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes ringRise {
+  from { transform: translateY(30px) scale(0.5); opacity: 0; }
+  to { transform: translateY(0) scale(1.2); opacity: 1; }
 }
 
 .shayari {
   font-size: 17px;
   line-height: 1.8;
   margin: 20px 0;
-  animation: textFade 4s infinite alternate;
 }
 
 button {
@@ -90,26 +104,30 @@ button {
   position: absolute;
 }
 
-@keyframes ringPulse {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.25);}
-  100% {transform: scale(1);}
-}
-
 @keyframes glow {
   0% {text-shadow: 0 0 5px pink;}
-  50% {text-shadow: 0 0 25px hotpink;}
+  50% {text-shadow: 0 0 30px hotpink;}
   100% {text-shadow: 0 0 5px pink;}
 }
-
 @keyframes fadeIn {
   from {opacity:0; transform: scale(0.8);}
   to {opacity:1; transform: scale(1);}
 }
 
-@keyframes textFade {
-  from {opacity:0.7;}
-  to {opacity:1;}
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: gold;
+  border-radius: 50%;
+  animation: explode 1.2s ease-out forwards;
+}
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
 }
 </style>
 </head>
@@ -122,41 +140,31 @@ button {
 </audio>
 
 <div class="card" id="card">
-
   <div class="title">❤️ Afsana ❤️</div>
 
   <div class="shayari">
     Tum meri zindagi ka wo ehsaas ho,<br>
-    jise lafzon mein bayan karna mumkin nahi…<br><br>
-
-    Tumhari muskurahat meri pehchaan ban gayi,<br>
-    tumhari khamoshi meri jaan ban gayi…<br><br>
-
-    <i>“Tujhme Rab Dikhta Hai”</i><br>
-    kyunki jab tum saamne hoti ho,<br>
-    toh poori duniya ruk si jaati hai 💫
+    jahan lafz khatam ho jaate hain…<br>
+    aur mohabbat shuru hoti hai 💫
   </div>
 
+  <div class="kneel">🧎‍♂️</div>
   <div class="ring">💍</div>
 
   <div class="shayari">
-    Aaj ek sawaal poochna chahta hoon…<br>
-    sirf Valentine ke liye nahi,<br>
-    balki poori zindagi ke liye ❤️<br><br>
+    Is pal, is dil se…<br>
+    ek hi sawaal hai ❤️<br><br>
 
-    Kya tum meri zindagi ki har subah,<br>
-    har shaam, har saans banogi?<br><br>
-
-    <b>Kya tum Mrs. Patel banogi?</b> 🌹
+    <b>Kya tum meri zindagi banogi?<br>
+    Kya tum Mrs. Patel banogi?</b>
   </div>
 
-  <button id="startBtn" onclick="startLove()">Tap gently… my heart is shy ❤️</button>
+  <button id="startBtn" onclick="startLove()">Tap slowly… I’m kneeling ❤️</button>
 
   <div id="choices" style="display:none;">
     <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
   </div>
-
 </div>
 
 <script>
@@ -177,18 +185,32 @@ function startLove() {
   document.getElementById("choices").style.display = "block";
 }
 
-// YES
+// Fireworks
+function launchFireworks() {
+  for (let i = 0; i < 40; i++) {
+    let fw = document.createElement("div");
+    fw.className = "firework";
+    fw.style.left = "50vw";
+    fw.style.top = "50vh";
+    fw.style.setProperty("--x", (Math.random()*400-200) + "px");
+    fw.style.setProperty("--y", (Math.random()*400-200) + "px");
+    document.body.appendChild(fw);
+    setTimeout(() => fw.remove(), 1200);
+  }
+}
+
+// YES clicked
 function yesClicked() {
+  launchFireworks();
+  setTimeout(launchFireworks, 800);
+
   document.getElementById("card").innerHTML = `
     <div class="ring">💍</div>
     <h1 class="title">She Said YES ❤️</h1>
     <p class="shayari">
       Afsana…<br><br>
-      Tumne meri zindagi ko<br>
-      ek khoobsurat kahani bana diya 🥹❤️<br><br>
-
-      Aaj se tum sirf meri mohabbat nahi,<br>
-      meri dua, meri taqdeer ho 💫<br><br>
+      Is ghutne par nahi,<br>
+      poori zindagi tumhare saath rehna chahta hoon 🥹❤️<br><br>
 
       Forever & always,<br>
       <b>Hritik Patel</b>
@@ -196,7 +218,7 @@ function yesClicked() {
   `;
 }
 
-// NO runs away
+// NO escape
 function moveNo() {
   const noBtn = document.getElementById("noBtn");
   noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
