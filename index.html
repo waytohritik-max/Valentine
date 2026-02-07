@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Afsana ❤️ Hritik</title>
+<title>Afsana ❤️ Hritik Patel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle at top, #ff758c, #ff7eb3, #ff416c);
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,16 +20,16 @@ body {
 
 .scene {
   transform-style: preserve-3d;
-  animation: floatScene 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
-@keyframes floatScene {
+@keyframes float {
   0%,100% { transform: rotateX(0deg) rotateY(0deg); }
   50% { transform: rotateX(6deg) rotateY(-6deg); }
 }
 
 .card {
-  background: rgba(255,255,255,0.96);
+  background: rgba(255,255,255,0.97);
   padding: 26px;
   border-radius: 22px;
   text-align: center;
@@ -41,6 +41,12 @@ body {
 h1 {
   color:#e91e63;
   margin-bottom: 10px;
+}
+
+.names {
+  font-size: 18px;
+  font-weight: bold;
+  color:#c2185b;
 }
 
 .quote {
@@ -69,6 +75,11 @@ button {
   background:#999;
   color:white;
   position:absolute;
+}
+
+audio {
+  width: 100%;
+  margin: 12px 0;
 }
 
 .ring {
@@ -101,30 +112,26 @@ button {
 
 <div class="scene">
   <div class="card" id="card">
-    <h1>Afsana ❤️</h1>
+    <h1>❤️ My Love ❤️</h1>
+    <div class="names">Afsana & Hritik Patel</div>
 
     <div class="quote" id="quote">
       तुझ में रब दिखता है…<br>
       शायद इसीलिए तुझसे प्यार बेइंतहा है।
     </div>
 
-    <p class="quote">
-      Will you be my Valentine<br>
-      and forever <b>Mrs. Patel</b>? 💍
-    </p>
+    <div class="quote">
+      Afsana,<br>
+      will you be my wife,<br>
+      my forever,<br>
+      and proudly <b>Mrs. Patel</b>? 💍
+    </div>
 
-    <!-- 🎵 Correct Song -->
-    <iframe
-      width="100%"
-      height="200"
-      src="https://www.youtube.com/embed/xU1Gd6KQZ3o"
-      title="Tujh Mein Rab Dikhta Hai"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-
-    <br>
+    <!-- 🎵 ONLINE AUDIO PLAYER (NO LOCAL FILE) -->
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
 
     <button id="yes" onclick="yesClicked()">YES 💖</button>
     <button id="no" onmouseover="moveNo()">NO 😜</button>
@@ -132,13 +139,13 @@ button {
 </div>
 
 <script>
-/* AI-style Romantic Quotes */
+/* Romantic AI-style Quotes */
 const quotes = [
-  "अगर मैं पूरी दुनिया भी जीत लूँ,<br>तो भी तुझसे ज़्यादा कीमती कुछ नहीं होगा।",
-  "तू साथ हो तो हर लम्हा मुकम्मल लगता है।",
-  "मेरी हर दुआ में तेरा नाम पहले आता है।",
-  "तुझ में रब दिखता है,<br>और अब वही मेरी सच्चाई है।",
-  "तू मेरी आदत नहीं,<br>मेरी ज़रूरत बन चुकी है।"
+  "अगर मेरी ज़िंदगी एक किताब होती,<br>तो हर पन्ने पर सिर्फ तेरा नाम होता।",
+  "तू साथ हो तो हर डर आसान लगता है।",
+  "I don’t want perfect moments,<br>I just want you.",
+  "मेरी हर सुबह तुझसे शुरू हो,<br>और हर रात तुझ पर खत्म।",
+  "Afsana, you are not my choice,<br>you are my destiny."
 ];
 
 let i = 0;
@@ -160,9 +167,10 @@ function yesClicked() {
         <div class="ring">💍</div>
         <h1>She Said YES ❤️</h1>
         <p class="quote">
+          Afsana & Hritik Patel<br><br>
           आज नहीं…<br>
           अब हमेशा के लिए।<br><br>
-          – Hritik Patel
+          Mrs. Patel 💖
         </p>
       </div>
     </div>
