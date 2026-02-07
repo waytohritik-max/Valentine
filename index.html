@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 420px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    animation: glow 3s infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+    to { box-shadow: 0 0 40px rgba(255,255,255,0.8); }
+}
+h1 { font-size: 2em; }
+p { font-size: 1.1em; line-height: 1.6; }
+.buttons {
+    margin-top: 30px;
+    position: relative;
+    height: 100px;
+}
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+#yesBtn {
+    background: #ff2f6e;
+    color: white;
+}
+#noBtn {
+    background: white;
+    color: #ff2f6e;
+    position: absolute;
+    left: 220px;
+    top: 0;
+}
+.message {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 6s infinite ease-in;
+}
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+.play-note {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="play-note">🎵 Tap anywhere to play our song</div>
+
+    <h1>Hey Afsana ❤️</h1>
+    <p>
+        Tumhari ek muskurahat meri poori duniya badal deti hai…<br>
+        Har pal, har khushi tumse judi hui hai.
+    </p>
+
+    <h2>
+        Kya tum meri Valentine banogi<br>
+        aur hamesha ke liye <b>Mrs. Patel</b> kahlaogi? 💍
+    </h2>
+
+    <div class="buttons">
+        <button id="yesBtn">YES ❤️</button>
+        <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <div class="message" id="response">
+        💖 Tumne haan kehkar meri zindagi mukammal kar di 💖<br><br>
+        Main wada karta hoon —
+        har muskaan, har aansu,
+        har sapne mein tumhara saath nibhaunga.
+        <br><br>
+        Forever yours,<br>
+        <b>Hritik Patel</b> 💕
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const response = document.getElementById("response");
+const music = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", () => {
+    music.play();
+}, { once: true });
+
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * 250 + "px";
+    noBtn.style.top = Math.random() * 60 + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+    response.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+});
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 350);
+</script>
+
+</body>
+</html>
