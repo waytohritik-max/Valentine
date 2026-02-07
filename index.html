@@ -9,8 +9,8 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(180deg, #ff4e8a, #6a0572);
-  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #ff6fae, #4a0033);
+  font-family: 'Georgia', serif;
   color: white;
   overflow: hidden;
   display: flex;
@@ -18,21 +18,191 @@ body {
   align-items: center;
 }
 
-/* Floating roses */
-.rose {
+/* Floating hearts */
+.heartFloat {
   position: absolute;
-  top: -50px;
-  font-size: 25px;
-  animation: fall linear infinite;
-  opacity: 0.8;
+  bottom: -40px;
+  font-size: 22px;
+  animation: floatUp linear infinite;
+  opacity: 0.7;
 }
 
-@keyframes fall {
+@keyframes floatUp {
   to {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translateY(-110vh);
+    opacity: 0;
   }
 }
 
+/* Main card */
 .card {
-  background: rgba(0,0,0,0.5);
-  paddin
+  background: rgba(0,0,0,0.55);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  max-width: 380px;
+  box-shadow: 0 0 60px rgba(255,105,180,0.6);
+  animation: fadeIn 3s;
+  z-index: 10;
+}
+
+.title {
+  font-size: 40px;
+  animation: glow 2.5s infinite;
+}
+
+.ring {
+  font-size: 60px;
+  margin: 20px 0;
+  animation: ringPulse 2.5s infinite;
+}
+
+.shayari {
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 20px 0;
+  animation: textFade 4s infinite alternate;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  margin: 12px;
+}
+
+#startBtn {
+  background: linear-gradient(45deg, gold, pink);
+  color: black;
+  box-shadow: 0 0 15px gold;
+}
+
+#yesBtn {
+  background: #00ffcc;
+  color: black;
+}
+
+#noBtn {
+  background: #ff0033;
+  color: white;
+  position: absolute;
+}
+
+@keyframes ringPulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.25);}
+  100% {transform: scale(1);}
+}
+
+@keyframes glow {
+  0% {text-shadow: 0 0 5px pink;}
+  50% {text-shadow: 0 0 25px hotpink;}
+  100% {text-shadow: 0 0 5px pink;}
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: scale(0.8);}
+  to {opacity:1; transform: scale(1);}
+}
+
+@keyframes textFade {
+  from {opacity:0.7;}
+  to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+
+  <div class="title">❤️ Afsana ❤️</div>
+
+  <div class="shayari">
+    Tum meri zindagi ka wo ehsaas ho,<br>
+    jise lafzon mein bayan karna mumkin nahi…<br><br>
+
+    Tumhari muskurahat meri pehchaan ban gayi,<br>
+    tumhari khamoshi meri jaan ban gayi…<br><br>
+
+    <i>“Tujhme Rab Dikhta Hai”</i><br>
+    kyunki jab tum saamne hoti ho,<br>
+    toh poori duniya ruk si jaati hai 💫
+  </div>
+
+  <div class="ring">💍</div>
+
+  <div class="shayari">
+    Aaj ek sawaal poochna chahta hoon…<br>
+    sirf Valentine ke liye nahi,<br>
+    balki poori zindagi ke liye ❤️<br><br>
+
+    Kya tum meri zindagi ki har subah,<br>
+    har shaam, har saans banogi?<br><br>
+
+    <b>Kya tum Mrs. Patel banogi?</b> 🌹
+  </div>
+
+  <button id="startBtn" onclick="startLove()">Tap gently… my heart is shy ❤️</button>
+
+  <div id="choices" style="display:none;">
+    <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
+  </div>
+
+</div>
+
+<script>
+// Floating hearts
+for (let i = 0; i < 25; i++) {
+  let h = document.createElement("div");
+  h.className = "heartFloat";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(h);
+}
+
+// Start music
+function startLove() {
+  document.getElementById("bgm").play();
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("choices").style.display = "block";
+}
+
+// YES
+function yesClicked() {
+  document.getElementById("card").innerHTML = `
+    <div class="ring">💍</div>
+    <h1 class="title">She Said YES ❤️</h1>
+    <p class="shayari">
+      Afsana…<br><br>
+      Tumne meri zindagi ko<br>
+      ek khoobsurat kahani bana diya 🥹❤️<br><br>
+
+      Aaj se tum sirf meri mohabbat nahi,<br>
+      meri dua, meri taqdeer ho 💫<br><br>
+
+      Forever & always,<br>
+      <b>Hritik Patel</b>
+    </p>
+  `;
+}
+
+// NO runs away
+function moveNo() {
+  const noBtn = document.getElementById("noBtn");
+  noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 80) + "px";
+}
+</script>
+
+</body>
+</html>
