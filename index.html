@@ -2,140 +2,179 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Afsana ❤️</title>
+<title>Afsana ❤️ Hritik</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg,#ff416c,#ff4b2b);
+  background: radial-gradient(circle at top, #ff758c, #ff7eb3, #ff416c);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Segoe UI', sans-serif;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.scene {
+  transform-style: preserve-3d;
+  animation: floatScene 6s ease-in-out infinite;
+}
+
+@keyframes floatScene {
+  0%,100% { transform: rotateX(0deg) rotateY(0deg); }
+  50% { transform: rotateX(6deg) rotateY(-6deg); }
 }
 
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
+  background: rgba(255,255,255,0.96);
+  padding: 26px;
+  border-radius: 22px;
   text-align: center;
-  max-width: 350px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+  width: 360px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+  transform: translateZ(80px);
 }
 
-h1 { color:#e91e63; }
+h1 {
+  color:#e91e63;
+  margin-bottom: 10px;
+}
 
-.shayari {
-  font-size: 17px;
-  margin: 12px 0;
+.quote {
+  font-size: 16px;
   color:#444;
+  line-height: 1.6;
+  margin: 14px 0;
+  min-height: 90px;
 }
 
 button {
-  padding: 12px 22px;
+  padding: 12px 26px;
   border-radius: 30px;
   border: none;
   font-size: 17px;
   cursor: pointer;
-  margin: 8px;
+  margin: 10px;
 }
 
-#yes { background:#e91e63; color:white; }
+#yes {
+  background:#e91e63;
+  color:white;
+}
+
 #no {
-  background:#aaa;
+  background:#999;
   color:white;
   position:absolute;
 }
 
 .ring {
-  font-size:80px;
-  animation:kneel 2s infinite;
-}
-
-.firework {
-  position:fixed;
-  width:8px;
-  height:8px;
-  background:gold;
-  border-radius:50%;
-  animation:boom 1s ease-out infinite;
+  font-size: 90px;
+  animation: kneel 2s ease-in-out infinite;
 }
 
 @keyframes kneel {
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(15px)}
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(18px) scale(0.95); }
+}
+
+.firework {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: gold;
+  border-radius: 50%;
+  animation: boom 1.2s ease-out forwards;
 }
 
 @keyframes boom {
-  from{transform:scale(1);opacity:1}
-  to{transform:scale(6);opacity:0}
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(7); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
-  <h1>Afsana ❤️</h1>
+<div class="scene">
+  <div class="card" id="card">
+    <h1>Afsana ❤️</h1>
 
-  <p class="shayari">
-    "तुझ में रब दिखता है,<br>
-    या मैं क्या करूँ…<br>
-    मेरे हर ख्वाब में<br>
-    सिर्फ तेरा ही नाम है 💕"
-  </p>
+    <div class="quote" id="quote">
+      तुझ में रब दिखता है…<br>
+      शायद इसीलिए तुझसे प्यार बेइंतहा है।
+    </div>
 
-  <p class="shayari">
-    Will you be my Valentine<br>
-    and my forever? 💍
-  </p>
+    <p class="quote">
+      Will you be my Valentine<br>
+      and forever <b>Mrs. Patel</b>? 💍
+    </p>
 
-  <!-- VISIBLE YouTube Player (THIS IS THE KEY) -->
-  <iframe
-    width="100%"
-    height="200"
-    src="https://www.youtube.com/embed/qoq8B8ThgEM"
-    title="Love Song"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
+    <!-- 🎵 Correct Song -->
+    <iframe
+      width="100%"
+      height="200"
+      src="https://www.youtube.com/embed/xU1Gd6KQZ3o"
+      title="Tujh Mein Rab Dikhta Hai"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
 
-  <br>
+    <br>
 
-  <button id="yes" onclick="yesClicked()">YES 💖</button>
-  <button id="no" onmouseover="moveNo()">NO 😜</button>
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onmouseover="moveNo()">NO 😜</button>
+  </div>
 </div>
 
 <script>
-function moveNo(){
-  const n=document.getElementById("no");
-  n.style.left=Math.random()*(window.innerWidth-100)+"px";
-  n.style.top=Math.random()*(window.innerHeight-50)+"px";
+/* AI-style Romantic Quotes */
+const quotes = [
+  "अगर मैं पूरी दुनिया भी जीत लूँ,<br>तो भी तुझसे ज़्यादा कीमती कुछ नहीं होगा।",
+  "तू साथ हो तो हर लम्हा मुकम्मल लगता है।",
+  "मेरी हर दुआ में तेरा नाम पहले आता है।",
+  "तुझ में रब दिखता है,<br>और अब वही मेरी सच्चाई है।",
+  "तू मेरी आदत नहीं,<br>मेरी ज़रूरत बन चुकी है।"
+];
+
+let i = 0;
+setInterval(() => {
+  document.getElementById("quote").innerHTML = quotes[i % quotes.length];
+  i++;
+}, 4000);
+
+function moveNo() {
+  const n = document.getElementById("no");
+  n.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  n.style.top  = Math.random() * (window.innerHeight - 50) + "px";
 }
 
-function yesClicked(){
-  document.body.innerHTML=`
-    <div class="card">
-      <div class="ring">💍</div>
-      <h1>She Said YES ❤️</h1>
-      <p class="shayari">
-        From today…<br>
-        from this moment…<br>
-        it’s always you & me.<br><br>
-        – Hritik Patel
-      </p>
+function yesClicked() {
+  document.body.innerHTML = `
+    <div class="scene">
+      <div class="card">
+        <div class="ring">💍</div>
+        <h1>She Said YES ❤️</h1>
+        <p class="quote">
+          आज नहीं…<br>
+          अब हमेशा के लिए।<br><br>
+          – Hritik Patel
+        </p>
+      </div>
     </div>
   `;
-  for(let i=0;i<30;i++){
-    const f=document.createElement("div");
-    f.className="firework";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*100+"vh";
+
+  for (let j = 0; j < 40; j++) {
+    const f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.top  = Math.random() * 100 + "vh";
     document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1000);
+    setTimeout(() => f.remove(), 1200);
   }
 }
 </script>
