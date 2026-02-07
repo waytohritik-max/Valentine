@@ -6,184 +6,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fbc2eb);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  perspective: 1200px;
-  overflow: hidden;
+body{
+  margin:0;
+  height:100vh;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
 }
 
-.scene {
-  transform-style: preserve-3d;
-  animation: float 6s ease-in-out infinite;
+.card{
+  background:white;
+  width:360px;
+  padding:24px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,.3);
+  animation:float 6s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%,100% { transform: rotateX(0deg) rotateY(0deg); }
-  50% { transform: rotateX(6deg) rotateY(-6deg); }
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
-.card {
-  background: rgba(255,255,255,0.97);
-  padding: 26px;
-  border-radius: 22px;
-  text-align: center;
-  width: 360px;
-  box-shadow: 0 30px 60px rgba(0,0,0,.35);
-  transform: translateZ(80px);
-}
+h1{color:#e91e63;margin:6px 0}
+.names{font-weight:bold;color:#c2185b}
 
-h1 {
-  color:#e91e63;
-  margin-bottom: 10px;
-}
-
-.names {
-  font-size: 18px;
-  font-weight: bold;
-  color:#c2185b;
-}
-
-.quote {
-  font-size: 16px;
+.quote{
+  min-height:80px;
+  font-size:16px;
   color:#444;
-  line-height: 1.6;
-  margin: 14px 0;
-  min-height: 90px;
+  margin:14px 0;
+  line-height:1.6;
 }
 
-button {
-  padding: 12px 26px;
-  border-radius: 30px;
-  border: none;
-  font-size: 17px;
-  cursor: pointer;
-  margin: 10px;
+audio{
+  width:100%;
+  margin:10px 0;
 }
 
-#yes {
-  background:#e91e63;
-  color:white;
+button{
+  border:none;
+  border-radius:30px;
+  padding:12px 26px;
+  font-size:17px;
+  margin:8px;
+  cursor:pointer;
 }
 
-#no {
-  background:#999;
-  color:white;
-  position:absolute;
+#yes{background:#e91e63;color:white}
+#no{background:#aaa;color:white;position:absolute}
+
+.ring{
+  font-size:90px;
+  animation:kneel 2s infinite;
 }
 
-audio {
-  width: 100%;
-  margin: 12px 0;
+@keyframes kneel{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(15px)}
 }
 
-.ring {
-  font-size: 90px;
-  animation: kneel 2s ease-in-out infinite;
+.firework{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:gold;
+  border-radius:50%;
+  animation:boom 1.2s forwards;
 }
 
-@keyframes kneel {
-  0%,100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(18px) scale(0.95); }
-}
-
-.firework {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: gold;
-  border-radius: 50%;
-  animation: boom 1.2s ease-out forwards;
-}
-
-@keyframes boom {
-  from { transform: scale(1); opacity: 1; }
-  to { transform: scale(7); opacity: 0; }
+@keyframes boom{
+  from{transform:scale(1);opacity:1}
+  to{transform:scale(8);opacity:0}
 }
 </style>
 </head>
 
 <body>
 
-<div class="scene">
-  <div class="card" id="card">
-    <h1>❤️ My Love ❤️</h1>
-    <div class="names">Afsana & Hritik Patel</div>
+<div class="card" id="card">
+  <h1>Afsana ❤️</h1>
+  <div class="names">Hritik Patel</div>
 
-    <div class="quote" id="quote">
-      तुझ में रब दिखता है…<br>
-      शायद इसीलिए तुझसे प्यार बेइंतहा है।
-    </div>
-
-    <div class="quote">
-      Afsana,<br>
-      will you be my wife,<br>
-      my forever,<br>
-      and proudly <b>Mrs. Patel</b>? 💍
-    </div>
-
-    <!-- 🎵 ONLINE AUDIO PLAYER (NO LOCAL FILE) -->
-    <audio controls>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-
-    <button id="yes" onclick="yesClicked()">YES 💖</button>
-    <button id="no" onmouseover="moveNo()">NO 😜</button>
+  <div class="quote" id="quote">
+    तुझ में रब दिखता है…<br>
+    शायद इसलिए तुझसे प्यार बेइंतहा है।
   </div>
+
+  <div class="quote">
+    Will you be my Valentine<br>
+    and forever my wife,<br>
+    <b>Mrs. Patel</b>? 💍
+  </div>
+
+  <!-- ✅ WORKING ONLINE AUDIO -->
+  <audio controls>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <button id="yes" onclick="yes()">YES 💖</button>
+  <button id="no" onmouseover="run()">NO 😜</button>
 </div>
 
 <script>
-/* Romantic AI-style Quotes */
-const quotes = [
-  "अगर मेरी ज़िंदगी एक किताब होती,<br>तो हर पन्ने पर सिर्फ तेरा नाम होता।",
-  "तू साथ हो तो हर डर आसान लगता है।",
-  "I don’t want perfect moments,<br>I just want you.",
-  "मेरी हर सुबह तुझसे शुरू हो,<br>और हर रात तुझ पर खत्म।",
-  "Afsana, you are not my choice,<br>you are my destiny."
+const quotes=[
+ "अगर मेरी ज़िंदगी दुआ है, तो उसका असर तुम हो।",
+ "I don’t need heaven, I found you.",
+ "हर रास्ता तुझ पर आकर खत्म होता है।",
+ "Afsana, you are my forever.",
+ "तू मिली तो लगा… रब मिल गया।"
 ];
 
-let i = 0;
-setInterval(() => {
-  document.getElementById("quote").innerHTML = quotes[i % quotes.length];
-  i++;
-}, 4000);
+let i=0;
+setInterval(()=>{
+ document.getElementById("quote").innerHTML=quotes[i%quotes.length];
+ i++;
+},3500);
 
-function moveNo() {
-  const n = document.getElementById("no");
-  n.style.left = Math.random() * (window.innerWidth - 100) + "px";
-  n.style.top  = Math.random() * (window.innerHeight - 50) + "px";
+function run(){
+ const n=document.getElementById("no");
+ n.style.left=Math.random()*(window.innerWidth-100)+"px";
+ n.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
 
-function yesClicked() {
-  document.body.innerHTML = `
-    <div class="scene">
-      <div class="card">
-        <div class="ring">💍</div>
-        <h1>She Said YES ❤️</h1>
-        <p class="quote">
-          Afsana & Hritik Patel<br><br>
-          आज नहीं…<br>
-          अब हमेशा के लिए।<br><br>
-          Mrs. Patel 💖
-        </p>
-      </div>
-    </div>
-  `;
-
-  for (let j = 0; j < 40; j++) {
-    const f = document.createElement("div");
-    f.className = "firework";
-    f.style.left = Math.random() * 100 + "vw";
-    f.style.top  = Math.random() * 100 + "vh";
-    document.body.appendChild(f);
-    setTimeout(() => f.remove(), 1200);
-  }
+function yes(){
+ document.body.innerHTML=`
+  <div class="card">
+    <div class="ring">💍</div>
+    <h1>She Said YES ❤️</h1>
+    <p class="quote">
+      Afsana & Hritik Patel<br><br>
+      आज से नहीं…<br>
+      अब हमेशा के लिए 💖<br><br>
+      Mrs. Patel
+    </p>
+  </div>
+ `;
+ for(let i=0;i<40;i++){
+  const f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top=Math.random()*100+"vh";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),1200);
+ }
 }
 </script>
 
