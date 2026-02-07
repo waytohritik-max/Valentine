@@ -6,127 +6,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle at top, #ff6fae, #2b0020);
-  font-family: 'Georgia', serif;
-  color: white;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+  margin:0;
+  height:100vh;
+  background:radial-gradient(circle at top,#ff6fae,#2b0020);
+  font-family:Georgia,serif;
+  color:white;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 /* Floating hearts */
-.heartFloat {
-  position: absolute;
-  bottom: -40px;
-  font-size: 22px;
-  animation: floatUp linear infinite;
-  opacity: 0.7;
+.heart{
+  position:absolute;
+  bottom:-30px;
+  font-size:20px;
+  animation:float 8s linear infinite;
+  opacity:.7;
 }
-@keyframes floatUp {
-  to { transform: translateY(-110vh); opacity: 0; }
+@keyframes float{
+  to{transform:translateY(-110vh);opacity:0;}
 }
 
 /* Card */
-.card {
-  background: rgba(0,0,0,0.65);
-  padding: 40px;
-  border-radius: 30px;
-  text-align: center;
-  max-width: 380px;
-  box-shadow: 0 0 60px rgba(255,105,180,0.7);
-  animation: fadeIn 3s;
-  z-index: 5;
+.card{
+  background:rgba(0,0,0,.65);
+  padding:35px;
+  border-radius:30px;
+  text-align:center;
+  max-width:380px;
+  box-shadow:0 0 60px rgba(255,105,180,.7);
+  animation:fadeIn 2.5s;
+  z-index:5;
 }
 
-.title {
-  font-size: 40px;
-  animation: glow 2.5s infinite;
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
 }
 
-/* Kneel animation */
-.kneel {
-  font-size: 60px;
-  animation: kneelDown 3s ease forwards;
+.title{
+  font-size:40px;
+  animation:glow 2.5s infinite;
 }
 
-@keyframes kneelDown {
-  0% { transform: translateY(-40px) scale(1); }
-  100% { transform: translateY(20px) scale(0.9); }
+@keyframes glow{
+  0%{text-shadow:0 0 5px pink}
+  50%{text-shadow:0 0 30px hotpink}
+  100%{text-shadow:0 0 5px pink}
 }
 
-/* Ring rise */
-.ring {
-  font-size: 55px;
-  margin: 15px 0;
-  opacity: 0;
-  animation: ringRise 3s ease forwards;
-  animation-delay: 2.5s;
+/* Kneel & ring */
+.kneel{
+  font-size:55px;
+  animation:kneelDown 3s forwards;
+}
+@keyframes kneelDown{
+  to{transform:translateY(20px) scale(.9)}
 }
 
-@keyframes ringRise {
-  from { transform: translateY(30px) scale(0.5); opacity: 0; }
-  to { transform: translateY(0) scale(1.2); opacity: 1; }
+.ring{
+  font-size:55px;
+  margin:15px 0;
+  opacity:0;
+  animation:ringRise 3s forwards;
+  animation-delay:2.5s;
+}
+@keyframes ringRise{
+  from{transform:translateY(30px) scale(.5);opacity:0}
+  to{transform:translateY(0) scale(1.2);opacity:1}
 }
 
-.shayari {
-  font-size: 17px;
-  line-height: 1.8;
-  margin: 20px 0;
+.shayari{
+  font-size:17px;
+  line-height:1.8;
+  margin:18px 0;
 }
 
-button {
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  margin: 12px;
+button{
+  padding:12px 28px;
+  font-size:17px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  margin:10px;
 }
 
-#startBtn {
-  background: linear-gradient(45deg, gold, pink);
-  color: black;
-  box-shadow: 0 0 15px gold;
+#musicBtn{
+  background:linear-gradient(45deg,#ffd700,#ff9ad5);
+  color:black;
 }
 
-#yesBtn {
-  background: #00ffcc;
-  color: black;
+#startBtn{
+  background:#ffb6c1;
+  color:black;
 }
 
-#noBtn {
-  background: #ff0033;
-  color: white;
-  position: absolute;
+#yesBtn{
+  background:#00ffcc;
+  color:black;
 }
 
-@keyframes glow {
-  0% {text-shadow: 0 0 5px pink;}
-  50% {text-shadow: 0 0 30px hotpink;}
-  100% {text-shadow: 0 0 5px pink;}
-}
-@keyframes fadeIn {
-  from {opacity:0; transform: scale(0.8);}
-  to {opacity:1; transform: scale(1);}
+#noBtn{
+  background:#ff0033;
+  color:white;
+  position:absolute;
 }
 
 /* Fireworks */
-.firework {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: gold;
-  border-radius: 50%;
-  animation: explode 1.2s ease-out forwards;
+.firework{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:gold;
+  border-radius:50%;
+  animation:explode 1.2s forwards;
 }
-@keyframes explode {
-  to {
-    transform: translate(var(--x), var(--y)) scale(0);
-    opacity: 0;
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y)) scale(0);
+    opacity:0;
   }
 }
 </style>
@@ -140,6 +141,7 @@ button {
 </audio>
 
 <div class="card" id="card">
+
   <div class="title">❤️ Afsana ❤️</div>
 
   <div class="shayari">
@@ -152,77 +154,93 @@ button {
   <div class="ring">💍</div>
 
   <div class="shayari">
-    Is pal, is dil se…<br>
-    ek hi sawaal hai ❤️<br><br>
-
+    Is dil se ek hi sawaal hai…<br><br>
     <b>Kya tum meri zindagi banogi?<br>
-    Kya tum Mrs. Patel banogi?</b>
+    Kya tum Mrs. Patel banogi?</b> ❤️
   </div>
 
-  <button id="startBtn" onclick="startLove()">Tap slowly… I’m kneeling ❤️</button>
+  <!-- MUSIC BUTTON -->
+  <button id="musicBtn" onclick="toggleMusic()">🔊 Play Music</button>
+  <p style="font-size:13px;opacity:.8;">Tap music… it’s my heartbeat ❤️</p>
+
+  <button id="startBtn" onclick="showChoices()">Continue 💞</button>
 
   <div id="choices" style="display:none;">
     <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
   </div>
+
 </div>
 
 <script>
-// Floating hearts
-for (let i = 0; i < 25; i++) {
-  let h = document.createElement("div");
-  h.className = "heartFloat";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (6 + Math.random() * 6) + "s";
+/* Floating hearts */
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(6+Math.random()*6)+"s";
   document.body.appendChild(h);
 }
 
-// Start music
-function startLove() {
-  document.getElementById("bgm").play();
-  document.getElementById("startBtn").style.display = "none";
-  document.getElementById("choices").style.display = "block";
-}
-
-// Fireworks
-function launchFireworks() {
-  for (let i = 0; i < 40; i++) {
-    let fw = document.createElement("div");
-    fw.className = "firework";
-    fw.style.left = "50vw";
-    fw.style.top = "50vh";
-    fw.style.setProperty("--x", (Math.random()*400-200) + "px");
-    fw.style.setProperty("--y", (Math.random()*400-200) + "px");
-    document.body.appendChild(fw);
-    setTimeout(() => fw.remove(), 1200);
+/* Music control */
+let playing=false;
+function toggleMusic(){
+  const m=document.getElementById("bgm");
+  const b=document.getElementById("musicBtn");
+  if(!playing){
+    m.volume=0.8;
+    m.play();
+    b.innerHTML="🔇 Pause Music";
+    playing=true;
+  }else{
+    m.pause();
+    b.innerHTML="🔊 Play Music";
+    playing=false;
   }
 }
 
-// YES clicked
-function yesClicked() {
-  launchFireworks();
-  setTimeout(launchFireworks, 800);
+/* Show YES/NO */
+function showChoices(){
+  document.getElementById("choices").style.display="block";
+  document.getElementById("startBtn").style.display="none";
+}
 
-  document.getElementById("card").innerHTML = `
+/* Fireworks */
+function fireworks(){
+  for(let i=0;i<40;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left="50vw";
+    f.style.top="50vh";
+    f.style.setProperty("--x",(Math.random()*400-200)+"px");
+    f.style.setProperty("--y",(Math.random()*400-200)+"px");
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  }
+}
+
+/* YES */
+function yesClicked(){
+  fireworks();
+  setTimeout(fireworks,800);
+  document.getElementById("card").innerHTML=`
     <div class="ring">💍</div>
     <h1 class="title">She Said YES ❤️</h1>
     <p class="shayari">
       Afsana…<br><br>
-      Is ghutne par nahi,<br>
-      poori zindagi tumhare saath rehna chahta hoon 🥹❤️<br><br>
-
-      Forever & always,<br>
+      Aaj meri zindagi ka sabse khoobsurat din hai 🥹❤️<br><br>
+      Forever yours,<br>
       <b>Hritik Patel</b>
     </p>
   `;
 }
 
-// NO escape
-function moveNo() {
-  const noBtn = document.getElementById("noBtn");
-  noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
-  noBtn.style.top = Math.random() * (window.innerHeight - 80) + "px";
+/* NO runs away */
+function moveNo(){
+  const n=document.getElementById("noBtn");
+  n.style.left=Math.random()*(window.innerWidth-120)+"px";
+  n.style.top=Math.random()*(window.innerHeight-80)+"px";
 }
 </script>
 
