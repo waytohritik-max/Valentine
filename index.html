@@ -2,67 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Afsana ❤️</title>
+<title>Afsana ❤️ Hritik</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle, #ff5f9e, #b30059);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(180deg, #ff4e8a, #6a0572);
   font-family: 'Segoe UI', sans-serif;
   color: white;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Floating roses */
+.rose {
+  position: absolute;
+  top: -50px;
+  font-size: 25px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
 }
 
 .card {
-  background: rgba(0,0,0,0.45);
-  padding: 30px;
-  border-radius: 25px;
-  text-align: center;
-  max-width: 350px;
-  animation: fadeIn 2s;
-  box-shadow: 0 0 30px rgba(255,255,255,0.3);
-}
-
-.heart {
-  font-size: 45px;
-  animation: beat 1.4s infinite;
-}
-
-.ring {
-  font-size: 50px;
-  animation: ringFloat 2s infinite;
-  margin: 10px 0;
-}
-
-button {
-  padding: 12px 26px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
-}
-
-#startBtn {
-  background: gold;
-  color: black;
-}
-
-#yesBtn {
-  background: #00ff99;
-  color: black;
-}
-
-#noBtn {
-  background: #ff0033;
-  color: white;
-  position: absolute;
-}
-
-@keyframes beat {
-  0%,100% {transform: scale(1);}
+  background: rgba(0,0,0,0.5);
+  paddin
